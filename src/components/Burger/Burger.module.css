@@ -1,0 +1,24 @@
+.Burger{
+    margin: auto;
+    overflow: scroll;
+    height: 250px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+@media (min-height: 700px) and (min-width: 1000px){
+    .Burger{
+        width: 700px;
+        height: 600px;
+    }
+}
+@media (min-height: 400px) and (min-width: 500px){
+    .Burger{
+        width: 450px;
+        height: 300px;
+    }
+}
+.rtlStyle{
+    direction: rtl;
+}

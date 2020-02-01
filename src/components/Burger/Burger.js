@@ -1,27 +1,27 @@
 import React from "react";
 import classes from './Burger.module.css';
-import BurgerIngeridiant from "./BurgerIngrediant/BurgerIngrediant";
-const Burger = (props)=>{
-    let transformedIngredient = Object.keys(props.ingredients).map(key =>{
-        return [...Array(props.ingredients[key])].map((_,i)=>{
-           return <BurgerIngeridiant type={key} key={i+key}/>;
-        });
-    }).reduce((arr,el)=>{
-        return arr.concat(el);
-    },[]);
-    console.log(transformedIngredient);
-    if (transformedIngredient.length ===0){
-        transformedIngredient = <p className={classes.rtlStyle} > لطفا محتویات ساندویچ خود را تعیین کنید.</p>
+import BurgerIngredient from "./BurgerIngrediant/BurgerIngrediant";
+
+const burger = ( props ) => {
+    let transformedIngredients = Object.keys( props.ingredients )
+        .map( igKey => {
+            return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {
+                return <BurgerIngredient key={igKey + i} type={igKey} />;
+            } );
+        } )
+        .reduce((arr, el) => {
+            return arr.concat(el)
+        }, []);
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients!</p>;
     }
-    return(
-
+    return (
         <div className={classes.Burger}>
-            <BurgerIngeridiant type={'bread-top'}></BurgerIngeridiant>
-            {transformedIngredient}
-            <BurgerIngeridiant type={'bread-bottom'}></BurgerIngeridiant>
-
-
+            <BurgerIngredient type="bread-top" />
+            {transformedIngredients}
+            <BurgerIngredient type="bread-bottom" />
         </div>
-    )
-}
-export default Burger;
+    );
+};
+
+export default burger;

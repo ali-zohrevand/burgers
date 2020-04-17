@@ -17,6 +17,7 @@ const Order =(props) =>
             <ul>
                 {ingredientSummery}
             </ul>
+            <p><strong>Total Price: {props.totalPrice}</strong></p>
             <p>
                 Continue to Checkout?
 

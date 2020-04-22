@@ -1,25 +1,27 @@
-import React from 'react';
-
-import Logo from '../../Logo/logo';
-import NavigationItems from '../NavigationItems/navigationItems';
-import classes from '../SideDrawer/SideDrawer.module.css';
-import Backdrop from '../../UI/Backdrop/backdrop';
+import React from "react";
+import Class from "../SideDrawer/SideDrawer.module.css";
+import Logo from "../../Logo/logo";
+import Navigation from '../../Navigation/NavigationItems/navigationItems';
 import Aux from '../../../hoc/Auxilary';
+import Backdrop from "../../UI/Backdrop/backdrop";
+const SiteDrawer = (props)=>{
+    let attachedClasses = [Class.SideDrawer, Class.Close];
+    if (props.open){
+        attachedClasses = [Class.SideDrawer, Class.Open];
+    }
+    return(
 
-const sideDrawer = ( props ) => {
-
-    return (
-   <Aux>
-       <div className={classes.SideDrawer}>
-           <div className={classes.Logo}>
-               <Logo></Logo>
-           </div>
-           <nav>
-               <NavigationItems></NavigationItems>
-           </nav>
-       </div>
-   </Aux>
+        <Aux>
+            <Backdrop show={props.open} clicked={props.closed}></Backdrop>
+            <div className={attachedClasses.join(" ")}>
+                <div className={Class.Logo}>
+                    <Logo/>
+                </div>
+                <nav>
+                    <Navigation></Navigation>
+                </nav>
+            </div>
+        </Aux>
     );
-};
-
-export default sideDrawer;
+}
+export default SiteDrawer;

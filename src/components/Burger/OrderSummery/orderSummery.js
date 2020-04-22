@@ -1,32 +1,38 @@
-import React from "react";
+import React, {Component} from "react";
 import Aux from "../../../hoc/Auxilary";
-import {object} from "prop-types";
 import Button from "../../UI/Button/button";
-const Order =(props) =>
-{
-    const ingredientSummery = Object.keys(props.ingredients).map(igKey=>{
+
+class Order extends Component {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("Order get updated");
+    }
+
+    render() {
+
+        const ingredientSummery = Object.keys(this.props.ingredients).map(igKey => {
+            return (
+                <li key={igKey}>
+                    <span style={{textTransform: 'capitalize'}}>{igKey}</span> : {this.props.ingredients[igKey]}
+                </li>
+            )
+        });
         return (
-            <li key={igKey}>
-                <span style={{textTransform:'capitalize'}}>{igKey}</span> : {props.ingredients[igKey]}
-            </li>
-        )
-    });
-    return(
-        <Aux>
-            <h1>Your Order is ready: </h1>
-            <ul>
-                {ingredientSummery}
-            </ul>
-            <p><strong>Total Price: {props.totalPrice}</strong></p>
-            <p>
-                Continue to Checkout?
+            <Aux>
+                <h1>Your Order is ready: </h1>
+                <ul>
+                    {ingredientSummery}
+                </ul>
+                <p><strong>Total Price: {this.props.totalPrice}</strong></p>
+                <p>
+                    Continue to Checkout?
 
-            </p>
-            <Button classType="Danger" clicked={props.purchasedCanceled}>Cancel</Button>
-            <Button classType="Success"  clicked={props.purchasedContinue}>Continue</Button>
+                </p>
+                <Button classType="Danger" clicked={this.props.purchasedCanceled}>Cancel</Button>
+                <Button classType="Success" clicked={this.props.purchasedContinue}>Continue</Button>
 
-        </Aux>
-
-    );
+            </Aux>
+        );
+    }
 }
+
 export default Order;

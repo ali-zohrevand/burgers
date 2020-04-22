@@ -4,9 +4,10 @@ import Aux from '../../hoc/Auxilary';
 import classes from './Layout.module.css';
 import Toolbar from "../UI/Toolbar/toolbar";
 import SiteDrawer from "../Navigation/SideDrawer/SideDrawer";
+
 class Layout extends Component{
-    state={
-        showDrawer: true,
+    state= {
+        showDrawer: false,
     }
     siteDrawerClosedHandler=()=>{
         this.setState({
